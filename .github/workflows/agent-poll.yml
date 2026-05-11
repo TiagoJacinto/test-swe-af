@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Poll for issues
         run: |
-          curl -X POST ${{ secrets.AGENTFIELD_URL }}/webhooks/poll/github \
+          curl -X POST https://tiago-vivobookgoe1504fae1504fa.tail4aacd1.ts.net/webhooks/poll/github \
             -H "Content-Type: application/json" \
             -d '{"repo": "${{ github.repository }}", "label": "ready-for-agent"}'
