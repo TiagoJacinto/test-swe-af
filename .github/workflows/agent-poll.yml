@@ -1,0 +1,16 @@
+name: Poll for ready issues
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Poll for issues
+        run: |
+          curl -X POST ${{ secrets.AGENTFIELD_URL }}/webhooks/poll/github \
+            -H "Content-Type: application/json" \
+            -d '{"repo": "${{ github.repository }}", "label": "ready-for-agent"}'
